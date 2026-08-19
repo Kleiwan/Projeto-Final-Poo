@@ -2,6 +2,7 @@
 erDiagram
     FUNCIONARIO {
         int id PK
+        string nome
         string Setor
     }
 
@@ -17,7 +18,5 @@ erDiagram
     }
 
     %% Relacionamentos e Cardinalidades
-    FUNCIONARIO ||--|{ MATERIAL : retira
-    FUNCIONARIO ||--o| RETIRADA : realiza
-    RETIRADA ||--o| RETIRADA : registra
-```
+    FUNCIONARIO ||--|{ RETIRADA : realiza
+    MATERIAL ||--|{ RETIRADA : contem
