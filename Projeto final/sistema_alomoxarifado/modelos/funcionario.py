@@ -18,7 +18,5 @@ class Funcionario:
     def setor(self):
         return self._setor
 
-    def __str__(self):
-        return f"Nome: {self.nome} | ID: {self.id} | Setor: {self.setor}"
-        
-        
+    def printar(self) -> None:
+        print(f"Nome: {self.nome} | ID: {self.id} | Setor: {self.setor}")

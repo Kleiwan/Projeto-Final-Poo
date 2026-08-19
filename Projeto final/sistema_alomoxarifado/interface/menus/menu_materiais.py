@@ -5,13 +5,17 @@ from interface.menu import Menu_base
 class Op_Materiaes(Menu_base):
 
     def exibir_menu_especial():
-        TelaMaterial.exibir_tela()
-        Op_Materiaes.escolha()
+        while True:
+            TelaMaterial.exibir_tela()
+
+            deve_voltar = Op_Materiaes.escolha()
+            if deve_voltar:
+                break
 
     def escolha():
         op = input('Digite a opcao que voce deseja')
         if op == '0':
-            pass
+            return True
         if op == '1':
             pass
         if op == '2':

@@ -4,7 +4,6 @@ from almoxarifado import Almoxarifado
 
 almoxarifado = Almoxarifado()
 
-
 class Op_Funcionarios(Menu_base):
 
     @staticmethod
@@ -25,7 +24,14 @@ class Op_Funcionarios(Menu_base):
             setor = input('Digite o setor do funcionario: ')
             almoxarifado.cadastrar_funcionario(nome, id, setor)
         elif op == '2':
-            almoxarifado.listar_funcionarios()
+            almoxarifado.listar_funcionarios()        
+        elif op == '3':
+            almoxarifado.consultar_funcionario()
+        elif op == '4':
+            '''
+            Consultar retirada de material
+            '''
+            pass
         elif op == '0':
             return True
         else:
