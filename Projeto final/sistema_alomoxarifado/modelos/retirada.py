@@ -1,18 +1,27 @@
-class Retirada:
-         """
-        Representa a retirada de uma quantidade de
-        determinado material por um funcionario.
-        """
-def __init__(self,funcionario, material, qtd, momento):
-        self.funcionario = funcionario
-        self.material = material
-        self.qtd = qtd
-        self.momento = momento 
+from datetime import datetime
 
-def __str__(self):
-        return (
-            f"Funcionario: {self.funcionario}"
-            f"Material: {self.material}"
-            f"Quantidade: {self.qtd}"
-            f"Momento:{self.momento}"
-        )
+class Retirada:
+    def __init__(self, funcionario, material, qtd):
+        self._funcionario = funcionario
+        self._material = material
+        self._qtd = qtd
+        self._momento = datetime.now()
+
+    @property
+    def funcionario(self):
+        return self._funcionario
+
+    @property
+    def material(self):
+        return self._material
+
+    @property
+    def qtd(self):
+        return self._qtd
+
+    @property
+    def momento(self):
+        return self._momento
+
+    def printar_retirada(self):
+        print(f"Funcionario: {self.funcionario.nome} | Material: {self.material.nome} | Quantidade: {self.qtd} | Momento: {self.momento}")

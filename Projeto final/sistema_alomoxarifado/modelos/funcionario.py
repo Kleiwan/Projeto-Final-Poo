@@ -1,9 +1,9 @@
 class Funcionario:
     """Representa um funcionário do almoxarifado."""
 
-    def __init__(self, nome: str, id: int, setor: str):
+    def __init__(self, nome: str, funcionario_id: int, setor: str):
         self._nome = nome
-        self._id = id
+        self._funcionario_id = funcionario_id
         self._setor = setor
 
     @property
@@ -11,12 +11,12 @@ class Funcionario:
         return self._nome
 
     @property
-    def id(self):
-        return self._id
+    def funcionario_id(self):
+        return self._funcionario_id
 
     @property
     def setor(self):
         return self._setor
 
     def printar(self) -> None:
-        print(f"Nome: {self.nome} | ID: {self.id} | Setor: {self.setor}")
+        print(f"Nome: {self.nome} | ID: {self.funcionario_id} | Setor: {self.setor}")

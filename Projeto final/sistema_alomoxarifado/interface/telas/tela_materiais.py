@@ -12,6 +12,6 @@ class TelaMaterial(Tela):
         print('[1] - Cadastrar materiais')
         print('[2] - Listar materiais')
         print('[3] - Consultar materiais')
-        print('[4] - Contsultar retirada de material')
+        print('[4] - Consultar retirada de material')
         print('[0] - Voltar')
         print('======================================')
