@@ -1,34 +1,45 @@
 from interface.telas.tela_retiradas import Tela_Retirada
 from interface.menu import Menu_base
-from almoxarifado import Almoxarifado
+from dados import almoxarifado
 
 class Op_Retirada(Menu_base):
 
+    @staticmethod
     def exibir_menu_especial():
         while True:
             Tela_Retirada.exibir_tela()
 
             deve_voltar = Op_Retirada.escolha()
+
             if deve_voltar:
                 break
-    
+
+    @staticmethod
     def escolha():
         op = input("Digite a opcao que voce deseja: ")
 
         if op == '0':
             return True
+
         elif op == '1':
-             Op_Retirada.registrar_retirada()
+            almoxarifado.registrar_retirada()
+
         elif op == '2':
-            Op_Retirada.consultar_retirada()
+            almoxarifado.listar_retiradas()
+
         elif op == '3':
-            Op_Retirada.listar_retiradas()
+            almoxarifado.consultar_retiradas()
+
         elif op == '4':
-            Op_Retirada.consultar_retiradas_funcionario()
+            almoxarifado.consultar_retiradas_funcionario()
+
         elif op == '5':
-            Op_Retirada.consultar_retiradas_material()
+            almoxarifado.consultar_retiradas_material()
+
         elif op == '6':
-            Op_Retirada.consultar_estoque()
+            almoxarifado.consultar_estoque()
+
         else:
-                print('Opcao invalida!')
-                Op_Retirada.exibir_menu_especial
+            print('Opcao invalida!')
+
+        return False
