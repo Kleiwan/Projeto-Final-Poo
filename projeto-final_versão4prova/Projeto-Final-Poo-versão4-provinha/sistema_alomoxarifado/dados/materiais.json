@@ -1,0 +1,16 @@
+[
+    {
+        "codigo": "1",
+        "nome": "Molho de tomate",
+        "quantidade": 2.0,
+        "bloqueado": false,
+        "motivo_bloqueio": ""
+    },
+    {
+        "codigo": "67",
+        "nome": "telha de vrido",
+        "quantidade": 100.0,
+        "bloqueado": true,
+        "motivo_bloqueio": "Ta com 67"
+    }
+]
