@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "nome": "Carlos",
+        "setor": "Cozinha",
+        "pode_retirar": true
+    },
+    {
+        "id": 57,
+        "nome": "laysinha",
+        "setor": "tijolos",
+        "pode_retirar": true
+    }
+]
