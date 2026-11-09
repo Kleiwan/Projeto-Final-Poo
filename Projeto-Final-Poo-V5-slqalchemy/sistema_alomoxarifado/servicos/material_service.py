@@ -22,8 +22,14 @@ class MaterialService:
         """
         Cadastra um novo material.
 
-        Levanta MaterialJaCadastradoError se o código já existir.
+        Levanta ValueError se a quantidade inicial for menor ou igual a zero e
+        MaterialJaCadastradoError se o código já existir.
         """
+        if quantidade <= 0:
+            raise ValueError(
+                "A quantidade inicial do material deve ser maior que zero."
+            )
+
         if self.buscar(codigo) is not None:
             raise MaterialJaCadastradoError(
                 f"Já existe um material cadastrado com o código {codigo}."
