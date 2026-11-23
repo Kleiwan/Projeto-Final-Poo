@@ -69,9 +69,62 @@ Projeto-Final-Poo-Versao-6/
 - **testes:** contém os arquivos utilizados para verificar o funcionamento do sistema.
 - **dados:** diretório utilizado para armazenar o banco SQLite local, quando essa configuração estiver ativa.
 
-## 3. Instalação e execução
+## 3. Programação Orientada a Objetos (POO)
 
-### 3.1. Clonar o projeto
+O sistema utiliza Programação Orientada a Objetos para organizar os dados e as operações em classes, facilitando a manutenção, a reutilização e a organização do código.
+
+### 3.1. Classes e objetos
+
+As principais classes do sistema representam os elementos do almoxarifado:
+
+| Classe | Responsabilidade |
+|---|---|
+| `Funcionario` | Representa os funcionários cadastrados e suas permissões. |
+| `Material` | Representa os materiais e suas informações de estoque. |
+| `Entrada` | Representa uma movimentação de entrada de materiais. |
+| `Retirada` | Representa uma movimentação de retirada de materiais. |
+
+Cada classe define os atributos e comportamentos relacionados à entidade que representa. Os objetos são instâncias dessas classes, utilizados pelo sistema durante as operações.
+
+### 3.2. Encapsulamento
+
+O encapsulamento organiza e controla o acesso aos dados dos objetos.
+
+No sistema, as informações dos funcionários, materiais e movimentações são manipuladas por meio das estruturas e operações definidas nas classes e nos serviços.
+
+As regras de negócio ajudam a impedir alterações inconsistentes, como registrar uma retirada maior que a quantidade disponível em estoque.
+
+### 3.3. Relacionamento entre objetos
+
+As entidades possuem relacionamentos que representam as relações existentes no almoxarifado.
+
+- Um funcionário pode estar relacionado a várias retiradas.
+- Um funcionário pode registrar várias entradas.
+- Um material pode aparecer em várias retiradas.
+- Um material pode aparecer em várias entradas.
+
+Esses relacionamentos são representados no SQLAlchemy por meio de chaves estrangeiras e relacionamentos ORM.
+
+### 3.4. Separação de responsabilidades
+
+O projeto organiza suas responsabilidades em diferentes módulos:
+
+- **Modelos:** representam as entidades e seus dados.
+- **Serviços:** executam as operações e aplicam as regras de negócio.
+- **Persistência:** gerencia a conexão e as sessões com o banco de dados.
+- **Interface:** permite a interação do usuário com o sistema.
+
+Essa organização evita concentrar todas as funcionalidades em uma única classe ou arquivo, facilitando a compreensão e a manutenção do projeto.
+
+### 3.5. POO e SQLAlchemy ORM
+
+O SQLAlchemy ORM permite trabalhar com registros do banco de dados por meio de objetos Python.
+
+As classes `Funcionario`, `Material`, `Entrada` e `Retirada` são mapeadas para suas respectivas tabelas. Dessa maneira, as operações de cadastro, consulta, edição e movimentação podem ser realizadas utilizando os objetos e as sessões do SQLAlchemy.
+
+## 4. Instalação e execução
+
+### 4.1. Clonar o projeto
 
 ```bash
 git clone URL_DO_REPOSITORIO
@@ -83,7 +136,7 @@ Entre na pasta do projeto:
 cd Projeto-Final-Poo-Versao-6
 ```
 
-### 3.2. Criar o ambiente virtual
+### 4.2. Criar o ambiente virtual
 
 ```bash
 python -m venv venv
@@ -95,23 +148,23 @@ Ativar no Windows:
 venv\Scripts\activate
 ```
 
-### 3.3. Instalar as dependências
+### 4.3. Instalar as dependências
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-### 3.4. Executar o sistema
+### 4.4. Executar o sistema
 
 ```bash
 python main.py
 ```
 
-## 4. Configuração do banco de dados
+## 5. Configuração do banco de dados
 
 O projeto permite utilizar SQLite ou MySQL. A escolha é realizada por meio das variáveis de ambiente definidas no arquivo `.env`.
 
-### 4.1. Configuração com SQLite
+### 5.1. Configuração com SQLite
 
 O SQLite é a configuração padrão quando a variável `DB_DRIVER` não está definida.
 
@@ -123,7 +176,7 @@ almoxarifado_v6.db
 
 Não é necessário instalar ou configurar um servidor externo para utilizar essa opção.
 
-### 4.2. Configuração com MySQL
+### 5.2. Configuração com MySQL
 
 Para utilizar o banco MySQL V2, é necessário:
 
@@ -158,7 +211,7 @@ DB_NAME=almoxarifado_v2
 
 O arquivo `.env` deve permanecer listado no `.gitignore`.
 
-### 4.3. Como a conexão funciona
+### 5.3. Como a conexão funciona
 
 A conexão é configurada em `persistencia/banco.py`, utilizando:
 
@@ -169,7 +222,7 @@ A conexão é configurada em `persistencia/banco.py`, utilizando:
 
 O método `criar_tabelas()` utiliza `Base.metadata.create_all(engine)` para criar tabelas ausentes. Ele não substitui o script SQL V2 nem realiza migrações automáticas de estruturas já existentes.
 
-## 5. Banco de dados V2
+## 6. Banco de dados V2
 
 A versão 2 do banco de dados utiliza quatro tabelas principais:
 
@@ -180,7 +233,7 @@ A versão 2 do banco de dados utiliza quatro tabelas principais:
 | `retiradas` | Registra as retiradas de materiais. |
 | `entradas` | Registra as entradas de materiais. |
 
-### 5.1. Relacionamentos
+### 6.1. Relacionamentos
 
 - Um funcionário pode estar associado a várias retiradas.
 - Um material pode aparecer em várias retiradas.
@@ -189,7 +242,7 @@ A versão 2 do banco de dados utiliza quatro tabelas principais:
 
 As tabelas `retiradas` e `entradas` possuem chaves estrangeiras que as relacionam às tabelas `funcionarios` e `materiais`.
 
-### 5.2. Massa de dados
+### 6.2. Massa de dados
 
 O banco V2 foi verificado no MySQL Workbench e apresenta a seguinte quantidade de registros:
 
@@ -201,7 +254,7 @@ O banco V2 foi verificado no MySQL Workbench e apresenta a seguinte quantidade d
 | Entradas | 400 |
 | **Total** | **3.000** |
 
-### 5.3. Diagrama Entidade-Relacionamento
+### 6.3. Diagrama Entidade-Relacionamento
 
 O DER do banco de dados V2 está disponível no arquivo:
 
@@ -211,7 +264,7 @@ DER_Almoxarifado_V2.pdf
 
 O documento apresenta as entidades, seus atributos, as chaves primárias, as chaves estrangeiras e os relacionamentos entre as tabelas.
 
-## 6. Funcionalidades do sistema
+## 7. Funcionalidades do sistema
 
 O sistema contempla operações de gerenciamento de:
 
@@ -240,7 +293,7 @@ O sistema contempla operações de gerenciamento de:
 - Consulta de retiradas registradas.
 - Atualização do estoque após uma retirada.
 
-## 7. Regras de negócio
+## 8. Regras de negócio
 
 O sistema aplica validações para manter a consistência das operações:
 
@@ -254,7 +307,7 @@ O sistema aplica validações para manter a consistência das operações:
 
 As validações são implementadas nos serviços e complementadas pelas restrições do banco de dados.
 
-## 8. Testes
+## 9. Testes
 
 Os arquivos de teste estão localizados na pasta `testes/`.
 
@@ -276,7 +329,7 @@ python testes/consultar_banco.py
 
 A execução dos testes deve ser realizada com o banco configurado corretamente.
 
-## 9. Observações sobre a persistência
+## 10. Observações sobre a persistência
 
 O projeto utiliza SQLAlchemy ORM para intermediar as operações entre os objetos Python e as tabelas do banco de dados.
 
@@ -284,7 +337,7 @@ A persistência pode ocorrer no SQLite ou no MySQL, conforme a configuração do
 
 Ao utilizar o MySQL V2, o sistema deve apontar para o banco `almoxarifado_v2`, previamente criado e estruturado pelo script SQL.
 
-## 10. Arquivos da entrega
+## 11. Arquivos da entrega
 
 Os principais documentos e arquivos relacionados ao projeto são:
 
