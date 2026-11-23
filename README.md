@@ -1,5 +1,7 @@
 # Sistema de Almoxarifado — Versão 6
 
+## Link relatório: file:///C:/Users/kleiw/Downloads/Documento%20sem%20t%C3%ADtulo%20(2).pdf
+
 Sistema de gerenciamento de almoxarifado desenvolvido em Python, utilizando Programação Orientada a Objetos (POO), SQLAlchemy e banco de dados relacional.
 
 A versão 6 dá continuidade às versões anteriores do projeto, reorganizando sua estrutura e utilizando o SQLAlchemy ORM para realizar a persistência dos dados. O sistema permite gerenciar funcionários, materiais, entradas e retiradas, aplicando regras de negócio para controlar o estoque e as movimentações.
