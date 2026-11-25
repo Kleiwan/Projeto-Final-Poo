@@ -19,3 +19,12 @@ Arquivos centrais alterados: `modelos/funcionario.py`, `modelos/material.py`, `m
 Validação executada:
 - `python -m unittest testes.teste_sistema -v`: 8 testes aprovados.
 - `python -m unittest testes.teste_v6 -v`: 4 testes aprovados.
+
+Iniciar conexão:
+- `python -m pip install -r requirements.txt` instala as bibliotecas necessárias no py
+- `SHOW DATABASES;` verifica se a database do almoxarifado já existe no sql
+- caso não exista, execute o sql, ele criará a database
+- - `python -c "from persistencia.banco import engine; from sqlalchemy import text; conexao = engine.connect(); print('Conexão estabelecida!'); print('Banco:', conexao.execute(text('SELECT DATABASE()')).scalar()); conexao.close()"` verifica se a conexão foi realizada por meio do terminal no vscode
+- `python main.py` execute e inicie o programa
+- `USE almoxarifado_v2;
+  SELECT * FROM funcionarios;` execute e teste a conexão com o banco novamente
