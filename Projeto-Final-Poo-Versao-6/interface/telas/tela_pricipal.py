@@ -9,7 +9,7 @@ class tela_menu_principal(Tela):
     @staticmethod
     def exibir_tela():
         print('==========MENU DE PRINCIPAL===========')
-        print('[1] - Cadastrar Funcionario')
+        print('[1] - Funcionario')
         print('[2] - Materiais')
         print('[3] - Retiradas')
         print('[0] - Sair')
